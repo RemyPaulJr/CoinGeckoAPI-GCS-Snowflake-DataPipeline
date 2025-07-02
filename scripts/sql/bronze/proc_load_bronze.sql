@@ -1,0 +1,4 @@
+COPY INTO coin_market_data
+FROM @bronze_stage
+FILE_FORMAT = (TYPE = 'PARQUET')
+MATCH_BY_COLUMN_NAME = CASE_INSENSITIVE;
