@@ -4,13 +4,16 @@ import pandas as pd
 from datetime import datetime, date, timezone
 import pyarrow
 from google.cloud import storage
+from dotenv import load_dotenv
 
 # Capture timestamp for ingestion and today's date for filename
 timestamp = datetime.now(timezone.utc)
 today = date.today()
 
 # HTTP API Request
-api_key = 'CG-8WyLFY96RG7oAkLc8Z6AVm3L' 
+# Load environment variable from .env file
+load_dotenv()
+api_key = os.getenv('API_KEY') 
 
 url = f"https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&x_cg_demo_api_key={api_key}"
 headers = {"accept": "application/json"}
